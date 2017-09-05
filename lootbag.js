@@ -22,7 +22,7 @@ module.exports.addToy = (toy, child) => {
 
 module.exports.getToy = (childRecepient) => { 
     return new Promise ( (resolve, reject) => {
-    db.each(`SELECT toy FROM lootbag WHERE child = "${childRecepient}"`, (err, toy) => {
+    db.get(`SELECT toy FROM lootbag WHERE child = "${childRecepient}"`, (err, toy) => {
         if (err) {
           console.log(err.toString())
           reject( err );
