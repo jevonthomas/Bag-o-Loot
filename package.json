@@ -1,0 +1,27 @@
+{
+  "name": "Bag-o-Loot",
+  "version": "1.0.0",
+  "description": "You have an acquaintance whose job is to, once a year, delivery presents to the best kids around the world. They have a problem, though. There are so many good boys and girls in the world now, that their old paper accounting systems just don't cut it anymore. They want you to write a program that will let them do the following tasks.",
+  "main": "lootbag.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jevonthomas/Bag-o-Loot.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jevonthomas/Bag-o-Loot/issues"
+  },
+  "homepage": "https://github.com/jevonthomas/Bag-o-Loot#readme",
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "mocha": "^3.2.0"
+  },
+  "scripts": {
+    "test": "mocha --watch --recursive -R spec"
+  },
+  "dependencies": {
+    "sqlite3": "^3.1.9"
+  }
+}
