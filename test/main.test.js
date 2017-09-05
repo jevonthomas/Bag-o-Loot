@@ -31,7 +31,7 @@ describe('get toy', () => {
     it('should return a string',  () => {
       getToy("jevon")
       .then( (data) => {
-        isString(data);
+        isObject(data);
       })
     })
   });

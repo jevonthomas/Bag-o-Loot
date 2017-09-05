@@ -20,4 +20,15 @@ module.exports.addToy = (toy, child) => {
   db.run(`INSERT INTO lootbag VALUES (null, "${toy}", "${child}")`);
 };
 
-module.exports.getToy = (childRecepient) => { db.each(`SELECT toy FROM lootbag WHERE child = ${childRecepient})`); };
+module.exports.getToy = (childRecepient) => { 
+    return new Promise ( (resolve, reject) => {
+    db.each(`SELECT toy FROM lootbag WHERE child = "${childRecepient}"`, (err, toy) => {
+        if (err) {
+          console.log(err.toString())
+          reject( err );
+        }
+        console.log('toy?', toy);
+        resolve(toy);
+      });
+    });
+};
