@@ -1,14 +1,23 @@
+#!/usr/bin/env node
+
 "use strict";
 
 const sqlite3 = require('sqlite3').verbose();
-const db = new sqlite3.Database('company.sqlite', (err) => {
-});
+const db = new sqlite3.Database('bag-o-loot.sqlite', (err) => {});
 
-// Add a toy to the bag o' loot, and label it with the child's name who will receive it.
+// Code from in class examples
+let createTables = () => {
+  db.run(`DROP TABLE IF EXISTS lootbag`)
+  .run(
+    `CREATE TABLE IF NOT EXISTS lootbag (
+    child_id INTEGER PRIMARY KEY AUTOINCREMENT, toy TEXT, child TEXT)`
+    )
+};
 
-//     ```bash
-//     ./lootbag.js add kite suzy
-//     ./lootbag.js add baseball michael
-//     ```
+createTables();
 
-module.exports.addToy = () => {};
+module.exports.addToy = (toy, child) => {
+  db.run(`INSERT INTO lootbag VALUES (null, "${toy}", "${child}")`);
+};
+
+module.exports.getToy = (childRecepient) => { db.each(`SELECT toy FROM lootbag WHERE child = ${childRecepient})`); };
