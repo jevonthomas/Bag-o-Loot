@@ -11,7 +11,10 @@ describe('lootbag', () => {
       isFunction(addToy);
     });
     it('should accept two strings as an argument',  () => {
-      addToy("mountain dew", "jevon");
+      addToy("Sword", "Leo");
+      addToy("Bo", "Don");
+      addToy("Sais", "Raph");
+      addToy("Nunchucks", "Mike");
     })
   });
   
@@ -21,7 +24,7 @@ describe('lootbag', () => {
       isFunction(getToy);
     });  
     it('should return an object',  () => {
-      return getToy("jevon")
+      return getToy("Leo")
       .then( (data) => {
         isObject(data);
       })
@@ -34,7 +37,7 @@ describe('lootbag', () => {
       isFunction(removeToy);
     });
     it('should return an undefined object',  () => {
-      return removeToy("jevon")
+      return removeToy("Mike")
       .then( (data) => {
         isUndefined(data);
       })
@@ -61,7 +64,7 @@ describe('lootbag', () => {
       isFunction(setTrue);
     });
     it('should return a delivered property with the value of 1',  () => {
-      return setTrue("suzan")
+      return setTrue("Leo")
       .then( (data) => {
         deepEqual(data, {delivered: 1});
       })
