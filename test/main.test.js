@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
 
-const { assert: { equal, deepEqual, notEqual, isFunction, isObject, isString } } = require('chai');
+const { assert: { equal, deepEqual, notEqual, isFunction, isObject, isString, isUndefined } } = require('chai');
 const { addToy, getToy, removeToy, listChildren, setTrue } = require('../lootbag');
 
 describe('lootbag', () => {
@@ -11,7 +11,7 @@ describe('lootbag', () => {
       isFunction(addToy);
     });
     it('should accept two strings as an argument',  () => {
-      addToy("nunchucks", "jevon");
+      addToy("mountain dew", "jevon");
     })
   });
   
@@ -33,6 +33,12 @@ describe('lootbag', () => {
     it('should exist', () => {
       isFunction(removeToy);
     });
+    it('should return an undefined object',  () => {
+      return removeToy("jevon")
+      .then( (data) => {
+        isUndefined(data);
+      })
+    })
   });
 
   // Must be able to list all children who are getting a toy.
@@ -55,7 +61,7 @@ describe('lootbag', () => {
       isFunction(setTrue);
     });
     it('should return a delivered property with the value of 1',  () => {
-      return setTrue("jevon")
+      return setTrue("suzan")
       .then( (data) => {
         deepEqual(data, {delivered: 1});
       })
