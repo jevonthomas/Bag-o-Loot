@@ -53,6 +53,16 @@ module.exports.listChildren = () => {
 };
 
 // Must be able to set the delivered property of a child, which defaults to false to true.
-module.exports.setTrue = () => {
-
+module.exports.setTrue = (child) => {
+  return new Promise ( (resolve, reject) => {
+    db.run(`UPDATE lootbag SET delivered = 1 WHERE child = "${child}"`)
+    .get(`SELECT delivered FROM lootbag WHERE child = "${child}"`, (err, children) => {
+        if (err) {
+          console.log(err.toString())
+          reject( err );
+        }
+        console.log('Good Kids', children);
+        resolve(children);
+      });
+    })
 };

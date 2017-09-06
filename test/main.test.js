@@ -1,11 +1,5 @@
 #!/usr/bin/env node
 
-// *********************************
-
-// Coded along with David B and Aspen
-
-// ***********************************
-
 
 const { assert: { equal, deepEqual, notEqual, isFunction, isObject, isString } } = require('chai');
 const { addToy, getToy, removeToy, listChildren, setTrue } = require('../lootbag');
@@ -55,10 +49,17 @@ describe('lootbag', () => {
   });
 
   // Must be able to set the delivered property of a child, which defaults to false, to true.
+  //false = 0, true = 1
   describe('setTrue', () => { 
     it('should exist', () => {
       isFunction(setTrue);
     });
+    it('should return a delivered property with the value of 1',  () => {
+      return setTrue("jevon")
+      .then( (data) => {
+        deepEqual(data, {delivered: 1});
+      })
+    })
   });
 
 });
