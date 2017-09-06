@@ -7,7 +7,8 @@ const db = new sqlite3.Database('bag-o-loot.sqlite', (err) => {});
 
 // Code from in class examples
 let createTables = () => {
-  db.run(
+  db.run(`DROP TABLE IF EXISTS lootbag`)
+  .run(
     `CREATE TABLE IF NOT EXISTS lootbag (
     child_id INTEGER PRIMARY KEY AUTOINCREMENT, toy TEXT, child TEXT, delivered INTEGER)`
     )
